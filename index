@@ -419,6 +419,51 @@ p { color: var(--text-muted); }
 }
 .timeline__body p { font-size: 0.93rem; margin-top: 4px; }
 
+/* ---- articles ---- */
+.articles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+@media (max-width: 760px) { .articles { grid-template-columns: 1fr; } }
+
+.article-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 26px;
+  backdrop-filter: blur(10px);
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.article-card:hover { background: var(--card-bg-hover); border-color: rgba(212,175,55,0.35); }
+
+.article-card__tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: var(--gold);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 14px;
+}
+.article-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+.article-card > p { font-size: 0.92rem; }
+
+.article-card details { margin-top: 12px; }
+.article-card details p { font-size: 0.92rem; margin-top: 10px; }
+.article-card summary {
+  cursor: pointer;
+  color: var(--gold);
+  font-size: 0.86rem;
+  font-weight: 600;
+  list-style: none;
+  user-select: none;
+}
+.article-card summary::-webkit-details-marker { display: none; }
+.article-card summary::after { content: " ›"; }
+.article-card details[open] summary::after { content: " ⌄"; }
+.article-card summary:hover { color: var(--gold-bright); }
+
 /* ---- final cta ---- */
 .section--cta { border-top: 1px solid var(--hairline); }
 .section--cta__inner {
@@ -730,6 +775,7 @@ select {
       <a href="#about" data-nav="about">About</a>
       <a href="#format" data-nav="format">Format</a>
       <a href="#schedule" data-nav="schedule">Schedule</a>
+      <a href="#articles" data-nav="articles">Articles</a>
       <a href="#portal" data-nav="portal">Participant Portal</a>
       <a href="#admin" data-nav="admin">Admin</a>
     </nav>
@@ -846,46 +892,140 @@ select {
     <div class="container">
       <div class="section__head">
         <h2>Schedule</h2>
-        <p>Fergana · September 27, 2026 — tentative, subject to final confirmation.</p>
+        <p>Fergana · September 27, 2026</p>
       </div>
 
       <ol class="timeline">
         <li class="timeline__item">
           <span class="timeline__time">10:00</span>
           <div class="timeline__body">
-            <h4>Opening &amp; Case Release</h4>
-            <p>Delegates check in, teams are confirmed, and the case brief is released.</p>
+            <h4>Opening Ceremony</h4>
+            <p>Delegates check in, teams are confirmed, and the championship officially opens.</p>
           </div>
         </li>
         <li class="timeline__item">
-          <span class="timeline__time">10:30</span>
+          <span class="timeline__time">10:30 – 11:00</span>
           <div class="timeline__body">
-            <h4>Business Case Solving</h4>
-            <p>Teams work the case under time pressure and prepare their strategy.</p>
+            <h4>Case Solving &amp; Presentation Prep</h4>
+            <p>Teams receive the case, work through the numbers, and prepare their presentation.</p>
           </div>
         </li>
         <li class="timeline__item">
-          <span class="timeline__time">14:30</span>
+          <span class="timeline__time">11:15 – 11:50</span>
           <div class="timeline__body">
-            <h4>Strategic Pitching</h4>
-            <p>Teams present to the judging panel and take questions.</p>
+            <h4>Presenting the Ideas</h4>
+            <p>Each team pitches its strategy to the judging panel and takes questions.</p>
           </div>
         </li>
         <li class="timeline__item">
-          <span class="timeline__time">17:00</span>
+          <span class="timeline__time">11:50 – 12:20</span>
+          <div class="timeline__body">
+            <h4>Coffee Break &amp; Networking</h4>
+            <p>A short break to recharge and connect with other delegates.</p>
+          </div>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__time">12:25 – 13:00</span>
           <div class="timeline__body">
             <h4>Economic Debates</h4>
             <p>Head-to-head debate rounds between teams, judged on argument and rebuttal.</p>
           </div>
         </li>
         <li class="timeline__item">
-          <span class="timeline__time">19:30</span>
+          <span class="timeline__time">13:00 – 13:30</span>
           <div class="timeline__body">
-            <h4>Awards &amp; Closing</h4>
+            <h4>Awards &amp; Rewarding Ceremony</h4>
             <p>Results are announced and the championship closes.</p>
           </div>
         </li>
       </ol>
+    </div>
+  </section>
+
+  <!-- ---- ARTICLES ---- -->
+  <section class="section section--alt" id="articles">
+    <div class="container">
+      <div class="section__head">
+        <h2>Articles</h2>
+        <p>A few short reads on the ideas behind the competition.</p>
+      </div>
+
+      <div class="articles">
+        <article class="article-card">
+          <span class="article-card__tag">Monopoly</span>
+          <h3>What Actually Makes a Market a Monopoly</h3>
+          <p>A monopoly isn't just "one big company" — it's a market where entry is
+             hard enough that a single seller can hold prices above the competitive
+             level for a long time. Size alone doesn't prove that.</p>
+          <details>
+            <summary>Read more</summary>
+            <p>What matters is the barrier: a patent, control of a key input, a
+               network effect, or a regulation that keeps rivals out. Take any of
+               those away and even a dominant firm behaves like it has competition,
+               because the threat of entry disciplines pricing almost as much as
+               entry itself. Genuine, durable pricing power is rarer than it looks
+               from the outside — which is exactly why spotting it correctly, in a
+               live case, is one of the highest-leverage moves a team can make. Ask
+               first whether the barrier is real and lasting, not just whether the
+               company is big today.</p>
+          </details>
+        </article>
+
+        <article class="article-card">
+          <span class="article-card__tag">Case Method</span>
+          <h3>Reading a Case Like an Analyst, Not a Reader</h3>
+          <p>Most teams lose time by reading a case start to finish before asking
+             what it's actually testing. The stronger habit is to find the question
+             first, then read for what answers it.</p>
+          <details>
+            <summary>Read more</summary>
+            <p>Before touching the numbers, restate the decision in one sentence:
+               what is this company choosing between, and what would change the
+               answer? That single sentence becomes a filter — every exhibit either
+               moves that decision or it doesn't. Build a short issue tree of two or
+               three drivers that matter most, ignore the rest, and show your
+               reasoning, not just your conclusion. Judges can tell the difference
+               between a team that found the right number and a team that found the
+               right question.</p>
+          </details>
+        </article>
+
+        <article class="article-card">
+          <span class="article-card__tag">Strategy</span>
+          <h3>Game Theory in Two Minutes: Why Your Opponent's Move Matters</h3>
+          <p>Strategy stops being simple the moment another team gets a vote. The
+             right move for you depends on what they do — and the right move for
+             them depends on what they expect from you.</p>
+          <details>
+            <summary>Read more</summary>
+            <p>That's the core idea behind game theory: outcomes come from
+               interaction, not isolated choices. A plan that looks strong in a
+               vacuum can fail the moment a competitor reacts, which is why the
+               strongest teams rehearse the other side's best response before
+               presenting their own. In a debate round this is doubly true — treat
+               it as a repeated game, not a single move. How your team argues in
+               round one shapes how much benefit of the doubt you get in round two.</p>
+          </details>
+        </article>
+
+        <article class="article-card">
+          <span class="article-card__tag">Debate</span>
+          <h3>The Economics of a Good Argument</h3>
+          <p>A strong economic argument isn't just a claim with a statistic attached
+             — it names the trade-off and says clearly what would happen instead if
+             the other side's position won.</p>
+          <details>
+            <summary>Read more</summary>
+            <p>Opportunity cost is the sharpest tool in a debate round precisely
+               because it forces a comparison: not "is this good," but "is this
+               better than the next best alternative." Pair that with marginal
+               thinking — arguing about the effect of the next unit, not the
+               average of all units — and most rebuttals get easier to answer,
+               because you've already framed the trade-off the judges will end up
+               weighing anyway.</p>
+          </details>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -1131,7 +1271,7 @@ select {
     portal: $('#page-portal'),
     admin: $('#page-admin'),
   };
-  const homeAnchors = new Set(['about', 'format', 'schedule']);
+  const homeAnchors = new Set(['about', 'format', 'schedule', 'articles']);
   let currentView = 'home';
 
   function setActiveNav(target) {
