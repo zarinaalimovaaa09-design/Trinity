@@ -172,6 +172,14 @@ app.get('/api/admin/users', requireAdmin, async (req, res) => {
 app.get('/healthz', (req, res) => res.json({ ok: true }));
 
 app.use((req, res) => {
+  // /admin, /portal, etc. aren't real server routes — they're sections the
+  // front-end JS shows/hides after index.html loads. Serve the page for any
+  // other GET request so direct links and refreshes don't hit a bare JSON 404.
+  if (req.method === 'GET' && !req.path.startsWith('/api/')) {
+    return res.sendFile(path.join(__dirname, 'public', 'index.html'), (err) => {
+      if (err) res.status(404).json({ ok: false, error: 'Not found.' });
+    });
+  }
   res.status(404).json({ ok: false, error: 'Not found.' });
 });
 
